@@ -106,7 +106,7 @@
     </div>
     <div class="contenedor-botones">
         <button>
-            <a href="">Iniciar Registro</a>
+            <a href="{{ url('verregistros') }}">Registros</a>
         </button>
         <button>
             <a href="">Editar formulario</a>

@@ -572,3 +572,57 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+/* Css del formulario de registro*/
+
+.titulo-login {
+  text-transform: uppercase;
+  color: var(--gris);
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.container-form #filterForm label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.container-form .filterForm label .endDate-container input {
+  margin: 0 auto; 
+  text-align: center; 
+}
+
+.container-form .filterForm label .endDate-container select {
+  width: 100%; 
+  margin: 0 auto; 
+}
+
+#container-form #filterForm label input,
+#container-form #filterForm label select {
+  width: 50%;
+  border-radius: 3px;
+  padding: 5px 7px;
+}
+
+#container-form #filterForm #boton-filtrar {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#container-form #filterForm #boton-filtrar button {
+  background-color: var(--verde-oscuro);
+  border-radius: 3px;
+  color: white;
+  font-size: 14.5px;
+  border: none;
+  padding: 5px 20px;
+  height: 30px;
+}
