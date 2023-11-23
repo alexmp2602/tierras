@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sitema de registros</title>
+    <title>Sistema de registros</title>
     <link rel="icon" href="{{ asset('assets/img/logo-sistemas.ico') }}">
 
     <!-- External CSS Libraries -->

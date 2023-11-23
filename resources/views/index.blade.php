@@ -8,21 +8,12 @@
         <a class="navbar-brand" href="#">
             <img src="{{ asset('assets/img/logo-sistemas2.png') }}" alt="Logo Municipalidad">
         </a>
-        <div style="display: flex; gap: 20px;">
-            <!-- Dropdown Menu 1 -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="opcionesDropdown">
-                        <a class="dropdown-item" href="index.php"><i class="fas fa-dollar"></i>Ordenes de pago</a>
-                        <a class="dropdown-item" href="index2.php"><i class="fas fa-tasks"></i>Compromisos</a>
-                    </div>
-                </li>
-            </ul>
-            <!-- Dropdown Menu 2 -->
+        <div style="display: flex; flex-direction:row; gap: 20px;">
+            <!-- Dropdown Menu -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Opciones">Opciones &nbsp;</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="usuarioDropdown">
                         <a class="dropdown-item" href="php/cambiar-contrasena.php"><i class="fas fa-lock"></i>Cambiar
                             Contraseña</a>
@@ -54,9 +45,12 @@
         <!-- Caja Inscripcion Section -->
         <hr class="linea-horizontal">
         <div class="caja-inscripcion">
-            <i class="fa-regular fa-file-lines fa-5x"></i>
+            <button class="titulo" onclick="desplegarContenido()">
+            <i class="fa-regular fa-file-lines fa-3x"></i>
+            <h3>Requisitos para el registro</h3>
+            <i class="fas fa-chevron-down"></i>
+            </button>
             <div class="contenedor-flex-inscripcion">
-                <h3>Requisitos para el registro</h3>
                 <ul>
                     <!-- Lista de requisitos -->
                     <li>
@@ -113,10 +107,10 @@
         <!-- Contenedor Botones Section -->
         <div class="contenedor-botones">
             <button>
-                <a href="{{ url('verregistros') }}">Registros</a>
+                <a href="{{ url('verregistros') }}">Iniciar Registro</a>
             </button>
             <button>
-                <a href="">Editar formulario</a>
+                <a href="">Editar Formulario</a>
             </button>
         </div>
 

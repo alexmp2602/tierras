@@ -30,6 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
         botonLeerMas.style.display = "inline";
     }
 
+    // Función para desplegar contenido al hacer clic en el botón
+    var titulo = document.querySelector(".titulo");
+    var contenedor = document.querySelector(".contenedor-flex-inscripcion");
+
+    titulo.addEventListener("click", function () {
+        contenedor.style.display = contenedor.style.display === "none" ? "block" : "none";
+    });
+
     // Asignar eventos a los botones
     botonLeerMas.addEventListener("click", mostrarDetalles);
     botonLeerMenos.addEventListener("click", ocultarDetalles);
