@@ -31,7 +31,7 @@
             </div>
         </nav>
 
-        <div class="container shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="container shadow-none p-3 mt-5 mb-5 bg-body rounded">
             <h2><span class="titulo-login">Datos del titular</span></h2>
 
             <!-- Primer formulario -->
@@ -44,67 +44,67 @@
                 </div>
                 <div class="col-md-3">
                     <label for="primer" class="form-label">Apellido titular</label>
-                    <input type="text" class="form-control" id="primer" name="primer" placeholder="Ingresa el primer apellido">
+                    <input type="text" class="form-control" id="primer" name="primer" placeholder="Ingresa el apellido">
                     <span class=" badge text-danger errors-primer"></span>
                 </div>
                 <div class="col-md-3">
                     <label for="segundo" class="form-label">DNI Titular</label>
-                    <input type="text" class="form-control" id="segundo" name="segundo" placeholder="Ingresa el segundo apellido">
+                    <input type="number" class="form-control" id="segundo" name="segundo" placeholder="Ingresa el DNI sin puntos">
                     <span class="badge text-danger errors-segundo"></span>
                 </div>
                 <div class="col-md-3">
                     <label for="segundo" class="form-label">Cuil</label>
-                    <input type="text" class="form-control" id="segundo" name="segundo" placeholder="Ingresa el segundo apellido">
+                    <input type="number" class="form-control" id="segundo" name="segundo" placeholder="Ingresa el CUIL sin puntos">
                     <span class="badge text-danger errors-segundo"></span>
                 </div>
 
                 <div class="col-md-6">
                     <label for="password" class="form-label">Fecha de nacimiento</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa el password">
+                    <input type="date" class="form-control" id="password" name="password" placeholder="Ingresa la fecha de nacimiento">
                     <span  class="badge text-danger errors-password"></span>
                 </div>
                 <div class="col-md-6">
                     <label  for="confirmarpassword" class="form-label">Nacionalidad</label>
-                    <input  type="password" class="form-control" id="confirmarpassword" name="confirmarpassword" placeholder="Confirma el password">
+                    <input  type="text" class="form-control" id="confirmarpassword" name="confirmarpassword" placeholder="Ingresa nacionalidad">
                     <span  class="badge text-danger errors-confirmarpassword"></span>
                 </div>
                 <div class="col-12">
                     <label for="direccion" class="form-label">Telefono</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa la direccion">
+                    <input type="number" class="form-control" id="direccion" name="direccion" placeholder="Ingresa tu telefono">
                     <span class="badge text-danger errors-direccion"></span>
                 </div>
                 <div class="col-md-6">
-                    <label for="ciudad" class="form-label">Estado civil</label>
-                    <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ingresa el nombre de la ciudad">
-                    <span class="badge text-danger errors-ciudad"></span>
-                </div>
-                <div class="col-md-6">
-                    <label for="rol" class="form-label">Lugar de trabajo</label>
+                    <label for="rol" class="form-label">Estado civil</label>
                       <select id="rol" name="rol" class="form-select">
-                        <option value="">Selecciona un Rol</option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Usuario">Usuario</option>
+                        <option value="">Soltero</option>
+                        <option value="Administrador">Casado</option>
+                        <option value="Usuario">Union convivencial</option>
                     </select>
                     <span class="badge text-danger errors-rol"></span>
                 </div>
+                <div class="col-md-6">
+                    <label  for="confirmarpassword" class="form-label">Lugar de trabajo</label>
+                    <input  type="text" class="form-control" id="confirmarpassword" name="confirmarpassword" placeholder="Lugar de trabajo">
+                    <span  class="badge text-danger errors-confirmarpassword"></span>
+                </div>
                 <div class="col-md-3">
                     <label for="postal" class="form-label">Remuneracion formal</label>
-                    <input type="text" class="form-control" id="postal" name="postal" placeholder="Ingresa un codigo postal">
+                    <input type="number" class="form-control" id="postal" name="postal" placeholder="Ingresa tu remuneracion formal">
                     <span class="badge text-danger errors-postal"></span>
                 </div>
                 <div class="col-md-3">
                     <label for="postal" class="form-label">Remuneracion informal</label>
-                    <input type="text" class="form-control" id="postal" name="postal" placeholder="Ingresa un codigo postal">
+                    <input type="number" class="form-control" id="postal" name="postal" placeholder="Ingresa tu remuneracion informal">
                     <span class="badge text-danger errors-postal"></span>
                 </div>
                 <div class="col-md-3">
                     <label for="postal" class="form-label">Correo electronico</label>
-                    <input type="text" class="form-control" id="postal" name="postal" placeholder="Ingresa un codigo postal">
+                    <input type="text" class="form-control" id="postal" name="postal" placeholder="Ingresa tu correo electronico">
                     <span class="badge text-danger errors-postal"></span>
                 </div>
                 <div class="col-md-3">
                     <label for="postal" class="form-label">Confirmacion Correo electronico</label>
-                    <input type="text" class="form-control" id="postal" name="postal" placeholder="Ingresa un codigo postal">
+                    <input type="text" class="form-control" id="postal" name="postal" placeholder="Confirma tu correo electronico">
                     <span class="badge text-danger errors-postal"></span>
                 </div>
     
@@ -114,23 +114,24 @@
                     <button type="button" id="btn-siguiente-1" class="btn btn-primary">Siguiente</button>
                 </div>
             </form>
-
+            
             <!-- Segundo formulario, inicialmente oculto -->
+            <div>
             <form class="row g-3 container-form" autocomplete="off" id="form2" style="display: none;">
                 @csrf
-                <h2><span class="titulo-login">Otros datos del titular</span></h2>
+                <h2><span class="titulo-login">Datos del conyuge</span></h2>
                 <div class="col-md-3">
-                    <label for="nombre" class="form-label">Nombre titular</label>
+                    <label for="nombre" class="form-label">Nombre conyuge</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa el nombre">
                     <span class="badge text-danger errors-nombre"></span>
                 </div>
                 <div class="col-md-3">
-                    <label for="primer" class="form-label">Apellido titular</label>
+                    <label for="primer" class="form-label">Apellido conyuge</label>
                     <input type="text" class="form-control" id="primer" name="primer" placeholder="Ingresa el primer apellido">
                     <span class=" badge text-danger errors-primer"></span>
                 </div>
-                <div class="col-md-3">
-                    <label for="segundo" class="form-label">DNI Titular</label>
+                <div class="col-md-6">
+                    <label for="segundo" class="form-label">DNI conyuge</label>
                     <input type="text" class="form-control" id="segundo" name="segundo" placeholder="Ingresa el segundo apellido">
                     <span class="badge text-danger errors-segundo"></span>
                 </div>
@@ -154,11 +155,6 @@
                     <label for="direccion" class="form-label">Telefono</label>
                     <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa la direccion">
                     <span class="badge text-danger errors-direccion"></span>
-                </div>
-                <div class="col-md-6">
-                    <label for="ciudad" class="form-label">Estado civil</label>
-                    <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ingresa el nombre de la ciudad">
-                    <span class="badge text-danger errors-ciudad"></span>
                 </div>
                 <div class="col-md-6">
                     <label for="rol" class="form-label">Lugar de trabajo</label>
@@ -197,6 +193,7 @@
                     <button type="button" id="btn-siguiente-2" class="btn btn-primary">Siguiente</button>
                 </div>
             </form>
+        </div>
         </div>
 
         <script src="{{asset('js/index.js')}}"></script>

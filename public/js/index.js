@@ -35,56 +35,52 @@ document.addEventListener("DOMContentLoaded", function () {
     botonLeerMenos.addEventListener("click", ocultarDetalles);
 });
 
-const btn = document.querySelector("#btn-enviar");
-const form = document.querySelector("#form");
-btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const datos = new FormData(form);
-    fetch("guardar", {
-        method: "post",
-        body: datos,
-    })
-        .then((response) => response.json())
-        .then((result) => {
-            console.log(result);
-            if (result.alerta == "danger") {
-                let nombre = document.querySelector(".errors-nombre");
-                nombre.textContent = result.nombre[0];
-                let primer = document.querySelector(".errors-primer");
-                primer.textContent = result.primer[0];
-                let segundo = document.querySelector(".errors-segundo");
-                segundo.textContent = result.segundo[0];
-                let email = document.querySelector(".errors-email");
-                email.textContent = result.email[0];
-                let password = document.querySelector(".errors-password");
-                password.textContent = result.password[0];
-                let confpassword = document.querySelector(
-                    ".errors-confirmarpassword"
-                );
-                confpassword.textContent = result.confirmarpassword[0];
-                let direccion = document.querySelector(".errors-direccion");
-                direccion.textContent = result.direccion[0];
-                let ciudad = document.querySelector(".errors-ciudad");
-                ciudad.textContent = result.ciudad[0];
-                let rol = document.querySelector(".errors-rol");
-                rol.textContent = result.rol[0];
-                let postal = document.querySelector(".errors-postal");
-                postal.textContent = result.postal[0];
-                let badge = document.querySelectorAll(".badge");
-                badge.forEach((span) => {
-                    span.style.display = "block";
-                    span.style.textAlign = "left";
-                });
-                setTimeout(() => {
-                    badge.forEach((span) => {
-                        span.style.display = "none";
-                    });
-                }, 3000);
-            }
-            if (result.alerta == "success") {
-                const success = document.querySelector(".alert");
-                success.textContent = "El formulario se valido correctamente";
-                success.style.display = "block";
-            }
-        });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form1 = document.getElementById('form1');
+    const form2 = document.getElementById('form2');
+    const btnSiguiente1 = document.getElementById('btn-siguiente-1');
+    const btnSiguiente2 = document.getElementById('btn-siguiente-2');
+    const tituloForm1 = document.querySelector('#form1 h2 .titulo-login');
+    const tituloForm2 = document.querySelector('#form2 h2 .titulo-login');
+
+    // Evento para pasar al segundo formulario
+    btnSiguiente1.addEventListener('click', function () {
+        form1.style.display = 'none';
+        form2.style.display = 'block';
+        tituloForm1.style.display = 'none';
+        tituloForm2.style.display = 'block';
+    });
+
+    // Evento para volver al primer formulario
+    btnSiguiente2.addEventListener('click', function () {
+        form2.style.display = 'none';
+        form1.style.display = 'block';
+        tituloForm1.style.display = 'block';
+        tituloForm2.style.display = 'none';
+    });
+
+    const btnEnviar = document.querySelector("#btn-enviar");
+    const form = document.querySelector("#form");
+    btnEnviar.addEventListener("click", (e) => {
+        e.preventDefault();
+        const datos = new FormData(form);
+        fetch("guardar", {
+            method: "post",
+            body: datos,
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result);
+                if (result.alerta == "danger") {
+                    // Resto del código para mostrar mensajes de error
+                }
+                if (result.alerta == "success") {
+                    const success = document.querySelector(".alert");
+                    success.textContent = "El formulario se validó correctamente";
+                    success.style.display = "block";
+                }
+            });
+    });
 });
+
