@@ -113,11 +113,10 @@ nav .dropdown-menu.show i {
     width: 55%;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 .caja-inscripcion {
-    margin-bottom: 25px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -159,7 +158,7 @@ nav .dropdown-menu.show i {
 .linea-horizontal {
     border-top: 1px solid #000;
     width: 100%;
-    padding-bottom: 25px;
+    margin: 25px 0;
 }
 
 .texto-requisitos {
@@ -181,7 +180,6 @@ nav .dropdown-menu.show i {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    margin-bottom: 25px;
 }
 
 .contenedor-botones button {

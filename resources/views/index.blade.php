@@ -1,27 +1,6 @@
 @extends('base')
 @section('contenido')
 
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Ordenes de Pago</title>
-    <link rel="icon" href="{{ asset('assets/img/logo-sistemas.ico') }}">
-
-    <!-- External CSS Libraries -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Istok+Web&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
 <body>
 
     <!-- Navbar -->
@@ -134,7 +113,7 @@
         <!-- Contenedor Botones Section -->
         <div class="contenedor-botones">
             <button>
-                <a href="">Iniciar Registro</a>
+                <a href="{{ url('verregistros') }}">Registros</a>
             </button>
             <button>
                 <a href="">Editar formulario</a>
@@ -261,68 +240,9 @@
             </div>
         </div>
     </div>
-    <hr class="linea-horizontal">
-    <div class="grid-iconos">
-        <i class="bi bi-geo-alt"></i>
-        <i class="bi bi-house"></i>
-        <i class="bi bi-calendar"></i>
-    </div>
-    <div class="contenedor-botones">
-        <button>
-            <a href="{{ url('verregistros') }}">Registros</a>
-        </button>
-        <button>
-            <a href="">Editar formulario</a>
-        </button>
-    </div>
-    <hr class="linea-horizontal">
-    <div>
-        <br><br>
-        <h2>Preguntas Frecuentes</h2>
-        <br>
-        <p>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <hr class="linea-horizontal">
-            <br>
-            <br>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <br>
-            <br>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <br>
-            <br>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <br>
-            <br>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <br>
-            <br>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <br>
-            <br>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <br>
-            <br>
-            <b>¿Cuáles son los requisitos para inscribirse?</b>
-            <br>
-            <br>
-        </p>
-    </div>
 </div>
 
 </body>
-
-<!-- Script Personalizado -->
-
-<script src="script.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-
-<!-- FontAwesome JS -->
-<script src="https://kit.fontawesome.com/0c5da2f650.js" crossorigin="anonymous"></script>
 
 </html>
 @stop
