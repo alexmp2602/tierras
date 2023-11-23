@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container-padre">
+    <div style="display:flex; flex-direction: column; justify-content:center; align-items: center;">
         @yield('contenido')
     </div>
 </body>
