@@ -44,29 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
+ddocument.addEventListener('DOMContentLoaded', function () {
     const form1 = document.getElementById('form1');
     const form2 = document.getElementById('form2');
     const btnSiguiente1 = document.getElementById('btn-siguiente-1');
     const btnSiguiente2 = document.getElementById('btn-siguiente-2');
-    const tituloForm1 = document.querySelector('#form1 h2 .titulo-login');
-    const tituloForm2 = document.querySelector('#form2 h2 .titulo-login');
-
-    // Evento para pasar al segundo formulario
-    btnSiguiente1.addEventListener('click', function () {
-        form1.style.display = 'none';
-        form2.style.display = 'block';
-        tituloForm1.style.display = 'none';
-        tituloForm2.style.display = 'block';
-    });
-
-    // Evento para volver al primer formulario
-    btnSiguiente2.addEventListener('click', function () {
-        form2.style.display = 'none';
-        form1.style.display = 'block';
-        tituloForm1.style.display = 'block';
-        tituloForm2.style.display = 'none';
-    });
 
     const btnEnviar = document.querySelector("#btn-enviar");
     const form = document.querySelector("#form");
@@ -91,4 +73,5 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
+
 
