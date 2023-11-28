@@ -9,7 +9,7 @@
             <img src="{{ asset('assets/img/logo-sistemas2.png') }}" alt="Logo Municipalidad">
         </a>
         <div style="display: flex; flex-direction:row; gap: 20px;">
-            <!-- Dropdown Menu -->
+            <!-- Dropdown Menu  -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button"
@@ -107,10 +107,10 @@
         <!-- Contenedor Botones Section -->
         <div class="contenedor-botones">
             <button>
-                <a href="{{ url('verregistros') }}">Iniciar Registro</a>
+                <a href="{{ url('pedirdni') }}">Iniciar Registro</a>
             </button>
             <button>
-                <a href="">Editar Formulario</a>
+                <a href="{{ url('editarformulario') }}">Editar Formulario</a>
             </button>
         </div>
 

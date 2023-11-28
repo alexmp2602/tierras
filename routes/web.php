@@ -23,6 +23,6 @@ Route::get('privada', function () {
 
 Route::get('verregistros', 'Web@verregistros');
 
-Route::get('verregistros', 'Web@verregistros');
+Route::get('editarregistros', 'Web@editarregistros');
 
 Route::post('control', 'Web@control');
