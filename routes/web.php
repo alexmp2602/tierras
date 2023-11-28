@@ -27,11 +27,6 @@ Route::get('pedirdni', function () {
 
 Route::get('verregistros', 'Web@verregistros');
 
-Route::post('buscardni', 'Web@buscardni');
-
-Route::get('editarformulario', function () {
-    return view('pedirdni1');
-});
-Route::post('editarformulario', 'Web@editarformulario');
+Route::get('verregistros', 'Web@verregistros');
 
 Route::post('control', 'Web@control');
