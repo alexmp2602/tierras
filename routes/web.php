@@ -20,9 +20,18 @@ Route::get('/', function () {
 Route::get('privada', function () {
     return view('login.login');
 });
+Route::get('pedirdni', function () {
+    return view('pedirdni');
+});
+
 
 Route::get('verregistros', 'Web@verregistros');
 
-Route::get('verregistros', 'Web@verregistros');
+Route::post('buscardni', 'Web@buscardni');
+
+Route::get('editarformulario', function () {
+    return view('pedirdni1');
+});
+Route::post('editarformulario', 'Web@editarformulario');
 
 Route::post('control', 'Web@control');

@@ -93,4 +93,30 @@ class Web extends Controller
         return view('registros',compact('registros'));
     }
 
+    public function buscardni(Request $request){
+        $registros = DB::table('terr_inscriptos')
+            ->select('*')  
+            ->where('dni','=',$request->input('dni'))         
+            ->get();
+        if(count($registros) > 0){
+            
+            $existe=true;
+            return view('error')->with('error','El DNI ya se encuentra registrado');
+        }
+        return view('registros');
+    }
+    public function editarformulario(Request $request){
+        $registros = DB::table('terr_inscriptos')
+            ->select('*')  
+            ->where('dni','=',$request->input('dni'))         
+            ->get();
+
+        if(count($registros) == 0){
+            
+            $existe=true;
+            return view('error')->with('error','El DNI no se encuentra registrado');
+        }
+        $registros=$registros->first();
+        return view('editarregistros',compact('registros'));
+    }
 }

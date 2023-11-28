@@ -1,34 +1,6 @@
 @extends('base')
 @section('contenido')
-        <nav class="navbar navbar-light">
-            <a class="navbar-brand" href="#">
-                <img src="assets/img/logo-sistemas2.png" alt="Logo Municipalidad">
-            </a>
 
-            <div style="display: flex; gap: 20px;">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="opcionesDropdown">
-                            <a class="dropdown-item" href="index.php"><i class="fas fa-dollar"></i> Ordenes de pago</a>
-                            <a class="dropdown-item" href="index2.php"><i class="fas fa-tasks"></i> Compromisos</a>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="usuarioDropdown">
-                            <a class="dropdown-item" href="php/cambiar-contrasena.php"><i class="fas fa-lock"></i>
-                                Cambiar Contraseña</a>
-                            <a class="dropdown-item" href="php/cerrar-sesion.php"><i class="fas fa-sign-out-alt"></i>
-                                Cerrar Sesión</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
 
         <div class="container py-5">
             <!-- Primer formulario -->
@@ -37,7 +9,7 @@
                 @csrf
                 <div class="col-md-3">
                     <label for="nombre" class="form-label">Nombre titular</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre"
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{$registros->apellido}}"
                         placeholder="Ingresa el nombre">
                     <span class="badge text-danger errors-nombre"></span>
                 </div>
@@ -389,4 +361,3 @@
             });
         </script>
 @stop
-
