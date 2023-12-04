@@ -5,118 +5,200 @@ use DB;
 use Mail;
 class Web extends Controller
 {
-    public function control(Request $request){
-        $usuario = $request->input('mail');
-        $clave   = $request->input('dni');
-        $usuarios = DB::table('zoo_personas')
-            ->where('mail','=',$usuario)
-            ->where('dni','=',$clave)
-            ->get();
-        if( count($usuarios) ){
-            $user = $usuarios->first();
-            $usuarioSession = ['id'=>$user->id,'nombre'=>$user->nombre];
-            $request->session()->put('userAct', $usuarioSession);
-            $request->session()->put('error', false);
+    public function pedirDni()
+    {
+        return redirect('pedirdni');
+    }
+    public function validarDni(Request $request)
+    {
+        $sesion = session()->getId();
+        //Primero validamos si ya existe en la base de datos de inscriptos
+        $inscripto = DB::table('terr_inscriptos')
+                     ->where('dni', $request->input('dni'))
+                     ->select('*')
+                     ->get();
+        if(count($inscripto) > 0) {
+            //Entonces quiere decir que ya existe
+            $inscripto = $inscripto->first();            
+            // Preguntamos si ya se encuentra en la base temporal con esa session
+            $temporal = DB::table('terr_inscriptos_temp')
+                     ->where('dni', $request->input('dni'))
+                     ->where('sesion', $sesion)
+                     ->select('*')
+                     ->get();
+            if(count($temporal) > 0) {
+                $temporal = $temporal->first();
+                return redirect('previo')->with( ['temporal' => $temporal] );
+            } else {
+                //Si no existe en la base temporal, lo agregamos
+                DB::table('terr_inscriptos_temp')->insert(
+                       ['dni' => $inscripto->dni,
+                        'correo'        => $inscripto->correo,
+                        'nombres'        => $inscripto->nombre,                        
+                        'apellido'      => $inscripto->apellido,
+                        'cuil'          => $inscripto->cuil,
+                        'fecha_nac'     => $inscripto->fecha_nac,
+                        'nacionalidad'  => $inscripto->nacionalidad,
+                        'telefono'      => $inscripto->telefono,
+                        'estado_civil'  => $inscripto->estado_civil,
+                        'discapacidad'  => $inscripto->discapacidad,
+                        'lugar_trabajo' => $inscripto->lugar_trabajo,
+                        'sesion' => $sesion] // completar todos los campos que faltan
+                );
+                // Aca lo leemos al nuevo agregado
+                $temporal = DB::table('terr_inscriptos_temp')
+                     ->where('dni', $request->input('dni'))
+                     ->where('sesion', $sesion)
+                     ->select('*')
+                     ->get()->first();
 
-            return redirect('panel');
+                return redirect('previo')->with( ['temporal' => $temporal] );
+            }    
         } else {
-            return redirect('login')->with('error','au');
+            // Primero validamos que exista en el padron de electores
+            $padron = DB::table('terr_padron')
+                     ->where('dni', $request->input('dni'))
+                     ->select('*')
+                     ->get();
+            if(!count($padron)) { // Si no existe en el padron de electores
+                return redirect('pedirdni')->with('error' ,'El DNI ingresado no se encuentra en el padrón de electores.');
+                // Me voy a informar que no puede continuar
+            } else {
+                $padron = $padron->first();
+                $temporal = DB::table('terr_inscriptos_temp')
+                  ->where('dni', $request->input('dni'))
+                  ->where('sesion', $sesion)
+                  ->select('*')
+                  ->get();
+                if(!count($temporal))  {
+
+                    DB::table('terr_inscriptos_temp')->insert(
+                        ['dni'           => $padron->dni,
+                        'nombres'        => $padron->nombres,                        
+                        'apellido'      => $padron->apellido,
+                        'sesion' => $sesion]                        
+                        );
+                }
+             // Aca lo leemos al nuevo agregado
+             $temporal = DB::table('terr_inscriptos_temp')
+                  ->where('dni', $request->input('dni'))
+                  ->where('sesion', $sesion)
+                  ->select('*')
+                  ->get()->first();
+
+             return redirect('previo')->with( ['temporal' => $temporal] );
+
+            }    
         }
+
+    }
+    public function validarPrevio(Request $request)
+    {
+        return redirect('pedircorreo');
+    }
+    public function validarCorreo(Request $request)
+    {
+        return redirect('pedirnombre');
+    }
+    public function validarNombre(Request $request)
+    {
+        return redirect('pedirapellido');
+    }
+    public function validarApellido(Request $request)
+    {
+        return redirect('pedircuil');
+    }
+    public function validarCuil(Request $request)
+    {
+        return redirect('pedirfechanacimiento');
+    }
+    public function validarFechaNacimiento(Request $request)
+    {
+        return redirect('pedirnacionalidad');
+    }
+    public function validarNacionalidad(Request $request)
+    {
+        return redirect('pedirtelefono');
+    }
+    public function validarTelefono(Request $request)
+    {
+        return redirect('pedirestadocivil');
+    }
+    public function validarEstadoCivil(Request $request)
+    {
+        return redirect('pedirdiscapacidad');
+    }
+    public function validarDiscapacidad(Request $request)
+    {
+        return redirect('pedirlugartrabajo');
+    }
+    public function validarLugarTrabajo(Request $request)
+    {
+        return redirect('pedirdomicilio');
+    }
+    public function validarDomicilio(Request $request)
+    {
+        return redirect('pedirdomicilioalternativo');
+    }
+    public function validarDomicilioAlternativo(Request $request)
+    {
+        return redirect('pedirsituacionhabitacional');
+    }
+    public function validarSituacionHabitacional(Request $request)
+    {
+        return redirect('pedirconyuge');
+    }
+    public function validarConyuge(Request $request)
+    {
+        return redirect('pedirnombreconyuge');
+    }
+    public function validarNombreConyuge(Request $request)
+    {
+        return redirect('pedirapellidoconyuge');
+    }
+    public function validarApellidoConyuge(Request $request)
+    {
+        return redirect('pedirdniconyuge');
+    }
+    public function validarDniConyuge(Request $request)
+    {
+        return redirect('pedircuilconyuge');
+    }
+    public function validarCuilConyuge(Request $request)
+    {
+        return redirect('pedirfechanacimientoconyuge');
+    }
+    public function validarFechaNacimientoConyuge(Request $request)
+    {
+        return redirect('pedirnacionalidadconyuge');
+    }
+    public function validarNacionalidadConyuge(Request $request)
+    {
+        return redirect('pedirtelefonoconyuge');
+    }
+    public function validarTelefonoConyuge(Request $request)
+    {
+        return redirect('pedirdiscapacidadconyuge');
+    }
+    public function validarDiscapacidadConyuge(Request $request)
+    {
+        return redirect('pedirlugartrabajoconyuge');
+    }
+    public function validarLugarTrabajoConyuge(Request $request)
+    {
+        return redirect('pedircorreoconyuge');
     }
 
-    public function ver(Request $request){
-        $usuario = $request->input('mail');
-        $clave   = $request->input('dni');
-        $usuarios = DB::table('zoo_personas')
-            ->where(function ($query) use ($usuario,$clave){
-                $query->where('mail', '=', $usuario)
-                    ->orWhere('dni', '=', $clave);
-            })
-            ->get();
-        if( count($usuarios) ){
-            return redirect('registro')->with('error','au');
-        } else {
-            $id_persona = DB::table('zoo_personas')->insertGetId(
-                [
-                    'dni' =>   $request->input('dni'),
-                    'nombre'  => $request->input('nombre'),
-                    'mail'  => $request->input('mail'),
-                    'telefono'  => $request->input('telefono'),
-                    'direccion'  => $request->input('direccion'),
-                    'barrio'  => $request->input('barrio')
-                ]);
-            $data = array(
-                'nombre'    => $request->input('nombre'),
-                'dni'    => $request->input('dni'),
-                'email'  	=> $request->input('mail'),
-                'motivo'    => 'Validación de cuenta',
-                'id'		=> $id_persona,
-                'tipo'		=> 'persona'
-            );
-            $email = $request->input('mail');
-            Mail::send('login/registro-mail', $data, function($message) use ($email) {
-                $message->to($email, 'Usuario')->from('prueba@mercedes.gob.ar','Zoonosis')->subject('Formulario de Registro en Bienestar Animal');
-            });
-            return view('login.registro_exitoso');
-        }
+    public function validarCorreoConyuge(Request $request)
+    {
+        return redirect('pedircantidadhijos');
     }
-
-    public function confirmar($tipo,$id){
-        $persona = DB::table('zoo_personas')
-            ->select('*')
-            ->where('id','=',$id)
-            ->get()->first();
-        if (!$persona->activo){
-            DB::beginTransaction();
-            try {
-                DB::table('zoo_personas')->where('id','=', $id)
-                    ->update(
-                        [
-                            'activo' => true
-                        ]);
-
-            } catch(ValidationException $e){
-                DB::rollBack();
-                dd(e);
-                //return redirect('afiliado.afiliado');
-            }
-            DB::commit();
-        }
-        return redirect('respuesta');
+    public function validarCantidadHijos(Request $request)
+    {
+        return redirect('pedirgrupofamiliar');
     }
-
-    public function verregistros(Request $request){
-        $registros = DB::table('terr_estado')
-            ->select('*')           
-            ->get();
-
-        return view('registros',compact('registros'));
+    public function validarGrupoFamiliar(Request $request)
+    {
+        return redirect('finalizar');
     }
-
-    public function buscardni(Request $request){
-        $registros = DB::table('terr_inscriptos')
-            ->select('*')  
-            ->where('dni','=',$request->input('dni'))         
-            ->get();
-        if(count($registros) > 0){
-            
-            $existe=true;
-            return view('error')->with('error','El DNI ya se encuentra registrado');
-        }
-        return view('registros');
     }
-    public function editarformulario(Request $request){
-        $registros = DB::table('terr_inscriptos')
-            ->select('*')  
-            ->where('dni','=',$request->input('dni'))         
-            ->get();
-
-        if(count($registros) == 0){
-            
-            $existe=true;
-            return view('error')->with('error','El DNI no se encuentra registrado');
-        }
-        $registros=$registros->first();
-        return view('editarregistros',compact('registros'));
-    }
-}
