@@ -11,17 +11,23 @@
                     d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
             </svg>
         </div>
+        
         <div class="container-form">
-            <form action="{{ url('validarnombre') }}" method="post">
+            <form action="{{ url('validarcantidadhijos') }}" method="post">
                 @csrf <!-- Asegura la protección contra CSRF -->
-                <label for="nombre">Ingresa tu Nombre</label>
-                <input type="text" name="nombre" id="nombre" required value="{{$temporal->nombres}}"
-                    placeholder="Escriba aquí su respuesta">
-                <label for="apellido">Ingresa tu Apellido</label>
-                <input type="text" name="apellido" id="apellido" required placeholder="Escriba aquí su respuesta"
-                    value="{{$temporal->apellido}}">
+                <label>¿Usted cuenta con un Grupo familiar que desea agregar?
+                    <p>
+                    (Tenga en cuenta que se iría a vivir con Ud. en caso de salir sorteado)
+                    </p></label>
+                <div style="display: flex;gap: 8px; align-items: center;">
+                    <label for="tieneGrupoFamiliarSi">Sí</label>
+                    <input type="radio" name="tieneGrupoFamiliar" id="tieneGrupoFamiliarSi" value="si" required>
+
+                    <label for="tieneGrupoFamiliarNo">No</label>
+                    <input type="radio" name="tieneGrupoFamiliar" id="tieneGrupoFamiliarNo" value="no" required>
+                </div>
                 <div class="contenedor-botones">
-                    <a href="{{url('pedircorreo')}}" class="button-form">Anterior</a>
+                    <a href="{{url('pedircorreoconyuge')}}" class="button-form">Anterior</a>
                     <button type="submit" class="button-form">Siguiente</button>
                 </div>
             </form>

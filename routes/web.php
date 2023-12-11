@@ -12,23 +12,46 @@ Route::get('pedirdni', function () {
     return view('pedirdni');
 });
 
-Route::get('previo', function () {
-    return view('previo');
+Route::get('previo', function (Request $request) {
+
+    $temporal = DB::table('terr_inscriptos_temp')
+        ->where('dni', session()->get('sesion_data.dni'))
+        ->where('sesion', session()->get('sesion_data.sesion'))
+        ->select('*')
+        ->get()->first();
+    return view('previo', compact('temporal'));
 });
 Route::get('pedircorreo', function () {
-    return view('pedircorreo');
+    $temporal = DB::table('terr_inscriptos_temp')
+        ->where('dni', session()->get('sesion_data.dni'))
+        ->where('sesion', session()->get('sesion_data.sesion'))
+        ->select('*')
+        ->get()->first();
+    return view('pedircorreo', compact('temporal'));
 });
 Route::get('pedirnombre', function () {
-    return view('pedirnombre');
-});
-Route::get('pedirapellido', function () {
-    return view('pedirapellido');
+    $temporal = DB::table('terr_inscriptos_temp')
+        ->where('dni', session()->get('sesion_data.dni'))
+        ->where('sesion', session()->get('sesion_data.sesion'))
+        ->select('*')
+        ->get()->first();
+    return view('pedirnombre', compact('temporal'));
 });
 Route::get('pedircuil', function () {
-    return view('pedircuil');
+    $temporal = DB::table('terr_inscriptos_temp')
+        ->where('dni', session()->get('sesion_data.dni'))
+        ->where('sesion', session()->get('sesion_data.sesion'))
+        ->select('*')
+        ->get()->first();
+    return view('pedircuil', compact('temporal'));
 });
 Route::get('pedirfechanacimiento', function () {
-    return view('pedirfechanacimiento');
+    $temporal = DB::table('terr_inscriptos_temp')
+    ->where('dni', session()->get('sesion_data.dni'))
+    ->where('sesion', session()->get('sesion_data.sesion'))
+    ->select('*')
+    ->get()->first();
+    return view('pedirfechanacimiento', compact('temporal'));
 });
 Route::get('pedirfechanacimiento', function () {
     return view('pedirfechanacimiento');
@@ -62,9 +85,6 @@ Route::get('pedirconyuge', function () {
 });
 Route::get('pedirnombreconyuge', function () {
     return view('pedirnombreconyuge');
-});
-Route::get('pedirapellidoconyuge', function () {
-    return view('pedirapellidoconyuge');
 });
 Route::get('pedirdniconyuge', function () {
     return view('pedirdniconyuge');
@@ -112,8 +132,6 @@ Route::post('validarcorreo', 'Web@validarCorreo');
 
 Route::post('validarnombre', 'Web@validarNombre');
 
-Route::post('validarapellido', 'Web@validarApellido');
-
 Route::post('validarcuil', 'Web@validarCuil');
 
 Route::post('validarfechanacimiento', 'Web@validarFechaNacimiento');
@@ -130,15 +148,13 @@ Route::post('validarlugartrabajo', 'Web@validarLugarTrabajo');
 
 Route::post('validardomicilio', 'Web@validarDomicilio');
 
-Route::post('validardomicilioalternativo', 'Web@validardomicilioalternativo');
+Route::post('validardomicilioalternativo', 'Web@validarDomicilioAlternativo');
 
 Route::post('validarsituacionhabitacional', 'Web@validarSituacionHabitacional');
 
 Route::post('validarconyuge', 'Web@validarConyuge');
 
 Route::post('validarnombreconyuge', 'Web@validarNombreConyuge');
-
-Route::post('validarapellidoconyuge', 'Web@validarApellidoConyuge');
 
 Route::post('validardniconyuge', 'Web@validarDniConyuge');
 

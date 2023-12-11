@@ -38,7 +38,7 @@
     <div class="contenedor-requisitos">
         <!-- Requisitos Header -->
         <hr class="linea-horizontal">
-        <div class="requisitos">
+        <div class="info-requisitos">
             <p class="texto-requisitos">El objetivo de esta línea es brindar acceso a crédito hipotecario para la compra
                 de
                 viviendas nuevas en uno de los Desarrollos Urbanísticos de Procrear II.</p>
@@ -47,11 +47,15 @@
         <!-- Caja Requisitos Section -->
         <hr class="linea-horizontal">
 
-        <div style="display:flex; justify-content: center">
-            <button class="caja-inscripcion">
-                <i class="fa-regular fa-file-lines fa-3x"></i>
-                <h3>Requisitos para el registro</h3>
-                <div class="contenedor-flex-inscripcion">
+        <div style="display:flex; justify-content:center">
+            <div class="contenedor-desplegar-requisitos">
+                <button class="desplegar-requisitos" id="desplegar-requisitos">
+                    <h3 style="margin-bottom: 0"><i class="fa-regular fa-file-lines fa-3x"
+                            style="font-size: 1em; padding-right:10px"></i>Requisitos para el registro
+                        <i class="fas fa-chevron-down"></i>
+                    </h3>
+                </button>
+                <div class="requisitos">
                     <ul style="text-align:start">
                         <!-- Lista de requisitos -->
                         <li>
@@ -71,29 +75,31 @@
                         </li>
                     </ul>
                 </div>
-            </button>
+            </div>
         </div>
         <hr class="linea-horizontal">
 
-        <!-- Iniciar Registro Section -->
-        <div class="iniciar-registro">
-            <div class="container-img">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icono-svg" style="width: 100%"
-                    viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                    <path
-                        d="M288 48c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48V192h40V120c0-13.3 10.7-24 24-24s24 10.7 24 24v72h24c26.5 0 48 21.5 48 48V464c0 26.5-21.5 48-48 48H432 336c-26.5 0-48-21.5-48-48V48zm64 32v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V80c0-8.8-7.2-16-16-16H368c-8.8 0-16 7.2-16 16zm16 80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H368zM352 272v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H368c-8.8 0-16 7.2-16 16zm176-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H528zM512 368v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H528c-8.8 0-16 7.2-16 16zM224 160c0 6-1 11-2 16c20 14 34 38 34 64c0 45-36 80-80 80H160V480c0 18-15 32-32 32c-18 0-32-14-32-32V320H80c-45 0-80-35-80-80c0-26 13-50 33-64c-1-5-1-10-1-16c0-53 42-96 96-96c53 0 96 43 96 96z" />
-                </svg>
-            </div>
-            <div class="container-registro">
-                <h1>Programa Mi Terreno</h1>
-                <span>Solo necesitamos algunos datos para iniciar el proceso de solicitud.</span>
-                    <a href="{{ url('pedirdni') }}" role="button">Iniciar registro</a>
+        <div style="display:flex; flex-direction:column; align-items:center">
 
+            <!-- Iniciar Registro Section -->
+
+            <div class="iniciar-registro">
+                <div class="container-img-index">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icono-svg-index"
+                        viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                        <path
+                            d="M288 48c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48V192h40V120c0-13.3 10.7-24 24-24s24 10.7 24 24v72h24c26.5 0 48 21.5 48 48V464c0 26.5-21.5 48-48 48H432 336c-26.5 0-48-21.5-48-48V48zm64 32v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V80c0-8.8-7.2-16-16-16H368c-8.8 0-16 7.2-16 16zm16 80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H368zM352 272v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H368c-8.8 0-16 7.2-16 16zm176-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H528zM512 368v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V368c0-8.8-7.2-16-16-16H528c-8.8 0-16 7.2-16 16zM224 160c0 6-1 11-2 16c20 14 34 38 34 64c0 45-36 80-80 80H160V480c0 18-15 32-32 32c-18 0-32-14-32-32V320H80c-45 0-80-35-80-80c0-26 13-50 33-64c-1-5-1-10-1-16c0-53 42-96 96-96c53 0 96 43 96 96z" />
+                    </svg>
+                </div>
+                <div class="container-registro">
+                    <h1>Programa Mi Terreno</h1>
+                    <span>Solo necesitamos algunos datos para iniciar el proceso de solicitud.</span>
+                    <a href="{{ url('pedirdni') }}" role="button">Ir a Registros</a>
+                </div>
             </div>
+
         </div>
 
-
-        <!-- Editar Registro Section -->
 
         <!-- Preguntas Frecuentes Section -->
         <hr class="linea-horizontal">

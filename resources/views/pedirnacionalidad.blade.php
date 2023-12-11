@@ -12,26 +12,36 @@
             </svg>
         </div>
         <div class="container-form">
-            <form action="{{ url('validarnombre') }}" method="post">
-                @csrf <!-- Asegura la protección contra CSRF -->
-                <label for="nombre">Ingresa tu Nombre</label>
-                <input type="text" name="nombre" id="nombre" required value="{{$temporal->nombres}}"
-                    placeholder="Escriba aquí su respuesta">
-                <label for="apellido">Ingresa tu Apellido</label>
-                <input type="text" name="apellido" id="apellido" required placeholder="Escriba aquí su respuesta"
-                    value="{{$temporal->apellido}}">
+            <form action="{{ url('validarnacionalidad') }}" method="post">
+                @csrf <!-- Asegura la protección contra CSRF -->                
+                <label for="nacionalidad">Selecciona tu Nacionalidad*</label>
+                <select name="nacionalidad" id="nacionalidad" required>
+                    <!-- Aquí debes incluir la lista de países de América del Sur -->
+                    <option value="argentina">Argentina</option>
+                    <option value="brasil">Brasil</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
                 <div class="contenedor-botones">
-                    <a href="{{url('pedircorreo')}}" class="button-form">Anterior</a>
+                    <a href="{{url('pedirfechanacimiento')}}" class="button-form">Anterior</a>
                     <button type="submit" class="button-form">Siguiente</button>
-                </div>
+                </div>                
             </form>
             @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
             @endif
         </div>
     </div>
 </div>
 
+<!-- Agrega el siguiente script para inicializar el selector de países -->
+<script>
+    $(document).ready(function() {
+        $('#nacionalidad').select2();
+    });
+</script>
+
 @stop
+
+

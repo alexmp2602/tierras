@@ -12,16 +12,13 @@
             </svg>
         </div>
         <div class="container-form">
-            <form action="{{ url('validarnombre') }}" method="post">
+            <form action="{{ url('validartelefono') }}" method="post">
                 @csrf <!-- Asegura la protección contra CSRF -->
-                <label for="nombre">Ingresa tu Nombre</label>
-                <input type="text" name="nombre" id="nombre" required value="{{$temporal->nombres}}"
-                    placeholder="Escriba aquí su respuesta">
-                <label for="apellido">Ingresa tu Apellido</label>
-                <input type="text" name="apellido" id="apellido" required placeholder="Escriba aquí su respuesta"
-                    value="{{$temporal->apellido}}">
+                <label for="telefono">Ingresa tu Teléfono para continuar*</label>
+                <input type="number" min="1100000000" max="9999999999" name="telefono" id="telefono" required
+                    placeholder="Escriba su numero sin 0 ni guiones">
                 <div class="contenedor-botones">
-                    <a href="{{url('pedircorreo')}}" class="button-form">Anterior</a>
+                    <a href="{{url('pedirnacionalidad')}}" class="button-form">Anterior</a>
                     <button type="submit" class="button-form">Siguiente</button>
                 </div>
             </form>

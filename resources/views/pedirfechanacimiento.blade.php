@@ -12,16 +12,13 @@
             </svg>
         </div>
         <div class="container-form">
-            <form action="{{ url('validarnombre') }}" method="post">
+            <form action="{{ url('validarfechanacimiento') }}" method="post">
                 @csrf <!-- Asegura la protección contra CSRF -->
-                <label for="nombre">Ingresa tu Nombre</label>
-                <input type="text" name="nombre" id="nombre" required value="{{$temporal->nombres}}"
-                    placeholder="Escriba aquí su respuesta">
-                <label for="apellido">Ingresa tu Apellido</label>
-                <input type="text" name="apellido" id="apellido" required placeholder="Escriba aquí su respuesta"
-                    value="{{$temporal->apellido}}">
+                <label for="fecha_nacimiento">Ingresa tu Fecha de Nacimiento para continuar*</label>
+                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required
+                    value="{{$temporal->fech_nac}}">
                 <div class="contenedor-botones">
-                    <a href="{{url('pedircorreo')}}" class="button-form">Anterior</a>
+                    <a href="{{url('pedircuil')}}" class="button-form">Anterior</a>
                     <button type="submit" class="button-form">Siguiente</button>
                 </div>
             </form>

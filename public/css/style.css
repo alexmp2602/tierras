@@ -28,6 +28,7 @@ p {
     margin: 0;
 }
 
+
 nav {
     padding: 8px 40px !important;
     width: 100%;
@@ -82,7 +83,7 @@ nav .dropdown-menu.show i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("/assets/img/ciudad-cortada.png");
+    background-image: url("/assets/img/ciudad.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -120,18 +121,25 @@ nav .dropdown-menu.show i {
 /* Contenedor Requisitos */
 
 .contenedor-requisitos {
-    width: 55%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     padding-top: 25px;
 }
 
-.caja-inscripcion {
-    width: 80%;
-    display: flex;
+.contenedor-desplegar-requisitos {
+    display:flex; 
     flex-direction: column;
     justify-content: center;
+    width: fit-content;
     align-items: center;
+    gap: 25px;
+}
+
+.desplegar-requisitos {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
     background-color: rgba(var(--verde-oscuro-op), 0.2);
     padding: 20px;
     gap: 20px;
@@ -139,17 +147,23 @@ nav .dropdown-menu.show i {
     border: 3px solid var(--verde-oscuro);
 }
 
-.caja-inscripcion h3 {
+.desplegar-requisitos h3 {
     font-size: 20px;
     font-weight: bold;
     text-align: start;
     padding: 0;
 }
 
-.contenenedor-flex-inscripcion {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+i.fa-regular.fa-file-lines.fa-3x {
+    display: inline;
+}
+
+.desplegar-requisitos h3 i {
+    display: none;
+}
+
+.requisitos ul {
+    margin-bottom: 0;
 }
 
 /* Linea Horizontal */
@@ -179,25 +193,30 @@ nav .dropdown-menu.show i {
 /* Sección en el index para iniciar y editar registro*/
 
 .iniciar-registro, .editar-registro {
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
     padding: 30px;
+    justify-content: center;
 }
 
-.editar-registro {
-    flex-direction: row-reverse;
-}
-
-.container-img,
 .container-registro {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
+.container-registro.texto-derecha {
+    display: flex;
+    align-items: flex-end !important;
+}
+
+.container-img-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .container-img img {
     width: 100%;
     height: 100%;
@@ -241,24 +260,50 @@ nav .dropdown-menu.show i {
     background-color: var(--verde);
 }
 
+.container-registro.texto-derecha span {
+    text-align: end;
+}
+
 /* Formulario */
 
 .formulario {
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-
-.container-formulario-img {
+    padding: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 100px;
+}
+
+.container-formulario-img {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.info-usuario {
+    display: flex;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.container-formulario-label {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.icono-svg-index {
+    width: 80%;
+    fill: var(--gris);
 }
 
 .icono-svg {
-    width: 80%;
-    height: 100%;
+    width: 100%;
     fill: var(--gris);
 }
 
@@ -267,36 +312,44 @@ nav .dropdown-menu.show i {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 100px;
 }
 
 .container-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-bottom: 20px;
 }
 
 .container-form form {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
 }
 
 .container-form label {
-    font-size: 24px;
     color: var(--gris);
 }
 
-.container-form form input {
+.container-form form input, .container-form form select {
+    width: 100%;
     border: none;
-    padding: 8px;
+    border-bottom: 1px solid var(--gris);
+    padding: 5px 0;
     font-size: 16px;
-    box-shadow: 3px 10px 18px -10px rgba(0, 0, 0, 0.2);
 }
 
 .container-form form input:focus {
     border-bottom: 1px solid var(--gris);
+}
+
+#documentoAlquiler {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: larger;
 }
 
 /* Formulario de checkbox */
@@ -304,11 +357,11 @@ nav .dropdown-menu.show i {
 .container-formulario-label form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 
 .formulario-label {
-    padding: 8px 0;
+    padding: 24px 0;
 }
 
 .container-formulario-label form label {
@@ -340,7 +393,40 @@ nav .dropdown-menu.show i {
     color: rgba(var(--gris-op),0.5);
 }
 
+/* Form Grid */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Grupo Familiar */
+
+#grupoFamiliar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.miembro-familiar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: end;
+    align-items: center;
+}
+
+.agregar-familiar {
+    display: flex;
+    align-items: center;
+}
+
 /* Contenedor Botones */
+
+.contenedor-botones-bottom {
+    padding-bottom: 30px;
+}
 
 .contenedor-botones {
     display: flex;
@@ -359,6 +445,7 @@ nav .dropdown-menu.show i {
     color: white;
     border-radius: 2px;
     padding: 8px 20px;
+    text-decoration: none;
 }
 
 .button-form:hover, .button:hover {
@@ -399,24 +486,54 @@ nav .dropdown-menu.show i {
         width: 75%;
     }
 
-    .caja-inscripcion {
+    .desplegar-requisitos {
         width: 100%;
+    }
+
+    .desplegar-requisitos h3 {
+        display: flex;
+        gap: 10px;
+    }
+
+    i.fa-regular.fa-file-lines.fa-3x {
+        display: none;
+    }
+
+    .desplegar-requisitos h3 i {
+        display: flex;
+    }
+
+    .requisitos {
+        display: none;
+    }
+
+    .formulario {
+        height: 100%;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .container-formulario {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
+        align-items: center;
+        gap: 20px;
     }
 
     .container-formulario-img {
-        height: 20%;
+        width: 100%;
+        padding: 20px 0;
+        gap: 20px;
     }
 
     .icono-svg {
         width: 100%;
-        height: 70%;
+        max-height: 170px;
     }
+
+    .container-formulario-label {
+        width: 100%;
+    }
+
 
     .container-form label {
         font-size: 20px;
@@ -438,6 +555,10 @@ nav .dropdown-menu.show i {
         width: 100%;
     }
 
+    .iniciar-registro, .editar-registro {
+        padding: 15px;
+    }
+
     .iniciar-registro {
         flex-direction: column;
     }
@@ -457,7 +578,20 @@ nav .dropdown-menu.show i {
         align-items: center;
     }
 
-    .container-registro span {
+    .container-img-index {
+        display: none;
+    }
+
+    .container-registro {
+        text-align: center;
+    }
+
+    .container-registro.texto-derecha {
+        display: flex;
+        align-items: center !important;
+    }
+
+    .container-registro.texto-derecha span {
         text-align: center;
     }
 

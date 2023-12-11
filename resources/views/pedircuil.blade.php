@@ -12,23 +12,20 @@
             </svg>
         </div>
         <div class="container-form">
-            <form action="{{ url('validarnombre') }}" method="post">
-                @csrf <!-- Asegura la protección contra CSRF -->
-                <label for="nombre">Ingresa tu Nombre</label>
-                <input type="text" name="nombre" id="nombre" required value="{{$temporal->nombres}}"
+            <form action="{{ url('validarcuil') }}" method="post">
+                @csrf <!-- Asegura la protección contra CSRF -->                
+                <label for="cuil">Ingresa tu CUIL para continuar*</label>
+                <input type="number" min="20000000001" max="30000000001" name="cuil" id="cuil" required
                     placeholder="Escriba aquí su respuesta">
-                <label for="apellido">Ingresa tu Apellido</label>
-                <input type="text" name="apellido" id="apellido" required placeholder="Escriba aquí su respuesta"
-                    value="{{$temporal->apellido}}">
                 <div class="contenedor-botones">
-                    <a href="{{url('pedircorreo')}}" class="button-form">Anterior</a>
+                    <a href="{{url('pedirnombre')}}" class="button-form">Anterior</a>
                     <button type="submit" class="button-form">Siguiente</button>
-                </div>
+                </div>                
             </form>
             @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
             @endif
         </div>
     </div>
